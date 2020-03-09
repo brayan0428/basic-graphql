@@ -1,9 +1,16 @@
+enum Level {
+  principiante
+  intermedio
+  avanzado
+}
 type Course {
   _id: ID!
   title: String!
   teacher: String
   description: String!
   topic: String
+  people: [Student]
+  level: Level
 }
 
 type Student {
@@ -60,4 +67,6 @@ type Mutation {
   editStudent(_id: ID!, input: StudentEditInput!): Student
   "Eliminar un estudiante"
   deleteStudent(_id: ID!): Boolean
+  "Agrega una persona a un curso"
+  addPeople(courseID: ID!, personID: ID!): Course
 }
